@@ -1,2 +1,2 @@
-coffee --bare --watch --compile *.coffee  &
-sass --watch style.scss:style.css &
+coffee --bare --compile *.coffee
+sass style.scss:style.css 
