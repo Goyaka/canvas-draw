@@ -1,2 +1,2 @@
-coffee --bare --compile *.coffee
-sass style.scss:style.css 
+coffee --bare --compile assets
+sass assets/style.scss:assets/style.css 
