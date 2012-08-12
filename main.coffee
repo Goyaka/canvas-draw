@@ -10,6 +10,17 @@ draw = (state)->
       drawRectangle(Number(coords[0]), Number(coords[1]), Number(coords[2]), Number(coords[3]), ctx, color(index))
 
 
+drawPointsString = (points_string) ->
+  canvas = $('#board')[0]
+  if canvas.getContext
+    ctx = canvas.getContext('2d')
+    ctx.clearRect(0, 0, 2000, 2000 )
+    rectangles = points_string.replace(/\(/g,'').replace(/\)/g,'').split('-')
+    for rectangle, index in rectangles
+      coords = rectangle.split(',')
+      drawRectangle(Number(coords[0]), Number(coords[1]), Number(coords[2]), Number(coords[3]), ctx, color(index))
+  
+
 color = (index)->
   color_list = ['red', 'green', 'blue', 'orange', 'black', 'purple', 'pink', 'yellow']
   color_list[index % color_list.length]
@@ -45,4 +56,7 @@ addEvents = ->
 
 $(document).ready ->
   fillFromCookies()
-  addEvents()
+  url_values = $.url()
+  points = url_values.param('points')
+  drawPointsString(points)
+  return
